@@ -33,12 +33,20 @@ body {
 .topmatter strong a:after { content: " \2013 " attr(title); }
 .topmatter :link, .topmatter :visited { text-decoration: none; }
 
-blockquote {
+p.ingress {
   color: #980101;
   font: italic normal 1.2em/1.2em serif;
   margin: 0.6em 2em 1.4em 1em;
   padding: 0;
   text-align: left;
+}
+body.stacken h1 {
+    font-size: 8em;
+    opacity: .3;
+    margin: 0;
+}
+body.stacken p.ingress {
+    margin-top: -2em;
 }
 
 .menu, .menu * { line-height: 1.2em; }
