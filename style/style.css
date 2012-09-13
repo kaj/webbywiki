@@ -43,22 +43,29 @@ blockquote {
 
 .menu, .menu * { line-height: 1.2em; }
 div.menu {
-  border: solid 0 #980101;
   border-left-width: 1px;
+  border: solid 0 #980101;
   font: normal 90% sans-serif;
   position: absolute;
-  top: 3em;
   right: 1em;
+  top: 3em;
   width: 18em;
 }
 .menu h2 { margin: .2em .4em; padding: 0; font-size: 14pt; }
 .menu ul { margin: 0; padding: 0; }
-.menu li { display: block; margin: 0; padding: 0 0 0 0.8em;
+.menu li {
   background-image: url(smalltop.png);
   background-position: 0 5px;
   background-repeat: no-repeat;
+  display: block;
+  margin: 0;
+  padding: 0 0 0 0.8em;
 }
-.menu li.label { font-weight: bold; padding: 0 0 0 0.2em; background-image: none; }
+.menu li.label {
+  background-image: none;
+  font-weight: bold;
+  padding: 0 0 0 0.2em;
+}
 .menu :link, .menu :visited { text-decoration: none; }
 .menu li:hover, .menu li:hover * { 
   background: url(smalltop.png) #cc8010; 
@@ -72,7 +79,7 @@ div.menu {
 .toclevel-3,
 .toclevel-4,
 .tocnumber {
-	display: none !important;
+  display: none !important;
 }
 
 h1 { margin: 1em 0 0 0; }
@@ -83,7 +90,7 @@ h2 { font: italic normal 2em/1em gentium, serif; }
 #bodyContent h2 { border-bottom: solid 1px #ee7708; }
 
 p {
-	margin: 0;
+  margin: 0;
 }
 
 div#wrap {
@@ -93,29 +100,29 @@ div#wrap {
 div#preContent,
 div#bodyContent,
 div#footer {
-	margin: 0 auto;
-	max-width: 50em;;
+  margin: 0 auto;
+  max-width: 50em;;
 }
 
 #footer {
-    border-top: solid 1px #980101;
+  border-top: solid 1px #980101;
 }
 #footer p {
-    text-align: right;
-    margin: .4em 0;
-    padding: 0;
+  text-align: right;
+  margin: .4em 0;
+  padding: 0;
 }
 #footer p.dated {
-    font-size: 80%;
-    font-style: italic;
+  font-size: 80%;
+  font-style: italic;
 }
 table#toc {
-	float: right;
-	margin: 10px 0px 10px 10px;
-	background: #fff;
+  background: #fff;
+  float: right;
+  margin: 10px 0px 10px 10px;
 }
 
 pre {
-	background: #eaeaea;
-	padding: 10px;
+  background: #eaeaea;
+  padding: 10px;
 }
