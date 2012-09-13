@@ -9,6 +9,7 @@ require "wiki_format.php";
 ##
 
 $page = isset($_GET['page']) ? '/'.$_GET['page'] : '';
+$pageclass = 'page_' . preg_replace('/[^\w]+/', '_', $page);
 $url = "http://wiki.stacken.kth.se/wiki/Stacken{$page}?printable=yes";
 $content = @file_get_contents($url);
 
@@ -96,7 +97,7 @@ ob_start();
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link type="text/css" rel="stylesheet" href="http://cookie.stacken.kth.se/style/style.css">
 	</head>
-	<body>
+	<body class="$pageclass">
 		<div class="topmatter">
 			<a name="top"></a>
 			<span class="langlink">[<a href="<?=$page?>/English">In english</a>]</span>
