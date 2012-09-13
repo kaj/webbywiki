@@ -44,6 +44,7 @@ if ($content) {
 	}
 
 	unset($content->h1);
+	unset($content->script);
 
 	$content = $content->asXML();
 } else {
