@@ -9,7 +9,7 @@ require "wiki_format.php";
 ##
 
 $page = isset($_GET['page']) ? '/'.$_GET['page'] : '';
-$pageclass = 'stacken' . stringtolower(preg_replace('/\W+/', '_', $page));
+$pageclass = 'stacken' . strtolower(preg_replace('/\W+/', '_', $page));
 $url = "http://wiki.stacken.kth.se/wiki/Stacken{$page}?printable=yes";
 $content = @file_get_contents($url);
 
