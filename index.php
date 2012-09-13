@@ -97,7 +97,7 @@ ob_start();
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link type="text/css" rel="stylesheet" href="http://cookie.stacken.kth.se/style/style.css">
 	</head>
-	<body class="$pageclass">
+	<body class="<?=$pageclass?>">
 		<div class="topmatter">
 			<a name="top"></a>
 			<span class="langlink">[<a href="<?=$page?>/English">In english</a>]</span>
