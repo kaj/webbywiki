@@ -1,0 +1,121 @@
+* { 
+  line-height: 1.4em; 
+}
+
+body { 
+  background: #ffaa22; /* #ff9610; */
+  margin: 0; 
+  padding: 0;
+}
+
+:link { color: #771028; }
+:visited { color: #400a20; }
+:link:hover, :visited:hover { background-color: #ffc844; }
+
+.topmatter {
+  border-bottom: solid 0.3em #980101;
+  font: normal 90% italic serif;
+  margin: 0.3em 0 1em 0;
+  overflow: hidden;
+  padding: 0 2%;
+}
+
+.topmatter .langlink,
+.topmatter .helplink {
+  float: right;
+  margin: 0 0 0 2em;
+}
+
+.topmatter strong  {
+  font-weight: normal;
+}
+
+.topmatter strong a:after { content: " \2013 " attr(title); }
+.topmatter :link, .topmatter :visited { text-decoration: none; }
+
+blockquote {
+  color: #980101;
+  font: italic normal 1.2em/1.2em serif;
+  margin: 0.6em 2em 1.4em 1em;
+  padding: 0;
+  text-align: left;
+}
+
+.menu, .menu * { line-height: 1.2em; }
+div.menu {
+  border: solid 0 #980101;
+  border-left-width: 1px;
+  font: normal 90% sans-serif;
+  position: absolute;
+  top: 3em;
+  right: 1em;
+  width: 18em;
+}
+.menu h2 { margin: .2em .4em; padding: 0; font-size: 14pt; }
+.menu ul { margin: 0; padding: 0; }
+.menu li { display: block; margin: 0; padding: 0 0 0 0.8em;
+  background-image: url(smalltop.png);
+  background-position: 0 5px;
+  background-repeat: no-repeat;
+}
+.menu li.label { font-weight: bold; padding: 0 0 0 0.2em; background-image: none; }
+.menu :link, .menu :visited { text-decoration: none; }
+.menu li:hover, .menu li:hover * { 
+  background: url(smalltop.png) #cc8010; 
+  background-position: 0 5px;
+  background-repeat: no-repeat;
+}
+.menu li:hover :link, .menu li:hover :visited { text-decoration: underline; }
+.menu hr, hr.mainend { display: none; }
+
+.toclevel-2,
+.toclevel-3,
+.toclevel-4,
+.tocnumber {
+	display: none !important;
+}
+
+h1 { margin: 1em 0 0 0; }
+h2, h3 { margin: 1.2em 0 0 0; }
+h4, h5, h6 { margin: 0.8em 0 0 0; }
+h1 { font: italic normal 2.8em/1em gentium, serif; }
+h2 { font: italic normal 2em/1em gentium, serif; }
+#bodyContent h2 { border-bottom: solid 1px #ee7708; }
+
+p {
+	margin: 0;
+}
+
+div#wrap {
+  padding: 0 20em 0 1em;
+}
+
+div#preContent,
+div#bodyContent,
+div#footer {
+	margin: 0 auto;
+	max-width: 50em;;
+}
+
+#footer {
+    border-top: solid 1px #980101;
+}
+#footer p {
+    text-align: right;
+    margin: .4em 0;
+    padding: 0;
+}
+#footer p.dated {
+    font-size: 80%;
+    font-style: italic;
+}
+table#toc {
+	float: right;
+	margin: 10px 0px 10px 10px;
+	background: #fff;
+}
+
+pre {
+	background: #eaeaea;
+	padding: 10px;
+}
