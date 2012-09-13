@@ -5,7 +5,7 @@ function tidy_html($html) {
 	$config = array(
 		'indent' => 2, # auto
 		'output-xhtml' => true,
-		'doctype' => 'transitional',
+		'doctype' => 'strict',
 		'wrap' => 120
 	);
 
