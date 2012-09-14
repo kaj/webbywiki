@@ -40,26 +40,12 @@ p.ingress {
   padding: 0;
   text-align: left;
 }
-body.stacken h1 {
-    font-size: 8em;
-    margin: 0;
-    opacity: .2;
-}
-body.stacken p.ingress {
-    font-size: 1.4em;
-    margin-top: -2em;
-    text-shadow: 0 0 0.5ex rgba(255, 255, 255, 0.8);
-}
 
 .menu, .menu * { line-height: 1.2em; }
 div.menu {
   border-left-width: 1px;
   border: solid 0 #980101;
   font: normal 90% sans-serif;
-  position: absolute;
-  right: 1em;
-  top: 3em;
-  width: 18em;
 }
 .menu h2 { margin: .2em .4em; padding: 0; font-size: 14pt; }
 .menu ul { margin: 0; padding: 0; }
@@ -103,15 +89,12 @@ p {
   margin: 0;
 }
 
-div#wrap {
-  padding: 0 20em 0 1em;
-}
-
 div#preContent,
 div#bodyContent,
 div#footer {
   margin: 0 auto;
-  max-width: 50em;;
+  max-width: 50em;
+  padding: 0 1ex;
 }
 
 #footer {
@@ -135,4 +118,29 @@ table#toc {
 pre {
   background: #eaeaea;
   padding: 10px;
+}
+
+@media screen and (min-width: 35em) {
+    div#wrap {
+	padding: 0 26% 0 0;
+    }
+    div.menu {
+	position: absolute;
+	right: 1%;
+	top: 3em;
+	width: 18em;
+	max-width: 24%;
+        border-width: 0 0 0 0.1em;
+    }
+
+    body.stacken h1 {
+	font-size: 8em;
+	margin: 0;
+	opacity: .2;
+    }
+    body.stacken p.ingress {
+	font-size: 1.4em;
+	margin-top: -2em;
+	text-shadow: 0 0 0.5ex rgba(255, 255, 255, 0.8);
+    }
 }
