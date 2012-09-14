@@ -1,1 +1,5 @@
 *~
+*.pyc
+
+/afsstatus/servers.txt
+/afsstatus/partitions.html
