@@ -96,7 +96,7 @@ ob_start();
 	<head>
 		<title><?=$title?> - Datorföreningen Stacken</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<link type="text/css" rel="stylesheet" href="http://cookie.stacken.kth.se/style/style.css">
+		<link type="text/css" rel="stylesheet" href="/style/style.css">
 	</head>
 	<body class="<?=$pageclass?>">
 		<div class="topmatter">
