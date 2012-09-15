@@ -36,7 +36,9 @@ for vol, size in volumes.items():
         if vp in users:
             userspace[vp] += size
 
-print '<ol class="listing spacewasters">'
-for user, size in userspace.items():
-    print '  <li>{0} {1}</li>'.format(user, size_fmt(size))
+print '<ol class="listing" id="spacewasters">'
+for user in sorted(userspace, key=userspace.__getitem__, reverse=True)[:40]:
+    size = userspace[user]
+    print '  <li><span class="user">{0}</span> <span class="size">{1}</span></li>' \
+        .format(user, size_fmt(size))
 print '</ol>'

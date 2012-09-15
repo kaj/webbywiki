@@ -163,6 +163,14 @@ table.fsstatus td:nth-child(5),
 table.fsstatus td:nth-child(6) {
     text-align: right;
 }
+ol#spacewasters {
+    -moz-column-width: 25ex;
+    column-width: 25ex;
+}
+ol#spacewasters .user {
+    display: inline-block;
+    width: 10ex;
+}
 
 @media screen and (min-width: 35em) {
     div#wrap {
