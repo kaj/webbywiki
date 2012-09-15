@@ -2,6 +2,7 @@
 from subprocess import Popen, PIPE
 from re import compile as regex
 from common import size_fmt
+from datetime import datetime
 
 cell = 'stacken.kth.se'
 
@@ -17,6 +18,8 @@ def tr(cell, *data):
         '</tr>'
 
 print '<table class="listing fsstatus">'
+print '  <caption>Volume usage for {}, generated {:%Y-%m-%d %H:%M}.</caption>' \
+    .format(cell, datetime.now())
 print '  <thead>'
 print '   ', tr('th', 'Server', 'Part', 'Used', 'Overview', 'Free', 'Total')
 print '  </thead>'

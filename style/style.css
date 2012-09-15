@@ -135,6 +135,12 @@ table.listing tr.footer td {
     border-top: solid 1px #980101;
 }
 
+table.fsstatus caption {
+    caption-side: bottom;
+    font-size: 80%;
+    font-style: italic;
+    text-align: left;
+}
 table.fsstatus td:nth-child(3),
 table.fsstatus td:nth-child(5),
 table.fsstatus td:nth-child(6) {
