@@ -86,6 +86,23 @@ unset($cnt->div);
 $menu = lang_menu($cnt);
 
 ###
+# Hämta och formatera sidmeny (om den finns)
+##
+
+preg_match("#/([a-z0-9]+)#i", $page, $m);
+$menu_url = "http://wiki.stacken.kth.se/wiki/Stacken/{$m[1]}/Menu?printable=yes";
+$cnt = @file_get_contents($menu_url);
+if (!empty($cnt)) {
+	$cnt = str_replace('&nbsp;','&#160;',$cnt);
+	$xml = new SimpleXMLElement($cnt);
+	$cnt = $xml->body->div->div->div->div;
+	unset($cnt->h3);
+	unset($cnt->div);
+	$menu_sub = "<h2>".ucfirst($m[1])."</h2>";
+	$menu_sub .= lang_menu($cnt);
+}
+
+###
 # Hämta och formatera special-TOC
 # (den skriver över vanlig TOC)
 ##
@@ -132,6 +149,11 @@ ob_start();
 					<!-- Importera TOC -->
 					<h2>Innehåll</h2>
 					<?=wiki_format($toc)?>
+					<!-- Slut på import -->
+				<? endif; ?>
+				<? if($menu_sub): ?>
+					<!-- Importera undermeny -->
+					<?=wiki_format($menu_sub)?>
 					<!-- Slut på import -->
 				<? endif; ?>
 				<!-- Menyn importerad från: <?=$menu_url?> -->
