@@ -12,6 +12,13 @@ body {
 :visited { color: #400a20; }
 :link:hover, :visited:hover { background-color: #ffc844; }
 
+.flash {
+  margin: 1em 2em;
+  padding: 1em 2em;
+  border: 1px solid black;
+  background-color: #ffc844;
+}
+
 .topmatter {
   border-bottom: solid 0.3em #980101;
   font: normal 90% italic serif;

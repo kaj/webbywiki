@@ -83,4 +83,15 @@ function menu_prepare($cnt) {
 	return $cnt;
 }
 
+function flash_next_page($str) {
+	$_SESSION['flash'] = $str;
+}
+
+function get_flash_message() {
+	if (!isset($_SESSION['flash'])) return;
+	$flash = $_SESSION['flash'];
+	unset($_SESSION['flash']);
+	return '<p class="flash">'.$flash.'</p>';
+}
+
 ?>

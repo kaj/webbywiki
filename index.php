@@ -2,6 +2,8 @@
 
 error_reporting(E_ALL & (~E_NOTICE));
 
+session_start();
+
 require "wiki_format.php";
 
 # Sätt språk
@@ -11,14 +13,21 @@ $lang = empty($_REQUEST['lang']) ? 'sv' : $_REQUEST['lang'];
 # Hämta och formatera sidan
 ##
 
-$page = isset($_GET['page']) ? '/'.$_GET['page'] : '';
+$page = isset($_GET['page']) && $_GET['page'] != "Start" ? '/'.$_GET['page'] : '';
+
 $pageclass = 'stacken' . strtolower(preg_replace('/\W+/', '_', $page));
 
-if ($lang == "sv") {
-	$url = "http://wiki.stacken.kth.se/wiki/Stacken{$page}?printable=yes";
-} else {
-	$url = "http://wiki.stacken.kth.se/wiki/Stacken{$page}.{$lang}?printable=yes";
+function get_url($lang) {
+	global $page;
+	if ($lang == "sv") {
+		$url = "http://wiki.stacken.kth.se/wiki/Stacken{$page}?printable=yes";
+	} else {
+		$url = "http://wiki.stacken.kth.se/wiki/Stacken{$page}.{$lang}?printable=yes";
+	}
+	return $url;
 }
+
+$url = get_url($lang);
 
 $content = @file_get_contents($url);
 
@@ -59,6 +68,24 @@ if ($content) {
 
 	$content = $content->asXML();
 } else {
+
+	# Page not found
+	# Kolla om vi har en sida på det andra språket som vi kan skicka vidare till
+
+	if ($lang == "en") {
+		if (file_get_contents(get_url("sv"))) {
+			flash_next_page("No English page available, you have been redirected to the swedish page.");
+			header("Location: ".(empty($page)?'/Start':$page));
+			exit;
+		}
+	} else if ($lang == "sv") {
+		if (file_get_contents(get_url("en"))) {
+			flash_next_page("Det fanns ingen svensk sida, du har blivit vidareskickad till den engelska sidan.");
+			header("Location: ".(empty($page)?'/Start.en':$page.'.en'));
+			exit;
+		}
+	}
+
 	header("HTTP/1.0 404 Not Found");
 	$content = "
 		<div id=\"bodyContent\">
@@ -117,17 +144,18 @@ ob_start();
 		<div class="topmatter">
 			<a name="top"></a>
 			<? if ($lang == "sv"): ?>
-				<span class="langlink">[<a href="<?=$page?>.en">In english</a>]</span>
+				<span class="langlink">[<a href="<?=(empty($page))?'/Start':$page?>.en">In english</a>]</span>
 			<? else: ?>
-				<span class="langlink">[<a href="<?=$page?>.sv">På svenska</a>]</span>
+				<span class="langlink">[<a href="<?=(empty($page))?'/Start':$page?>.sv">På svenska</a>]</span>
 			<? endif; ?>
 
 			<span class="helplink">[<a href="/help/web" title="Om Stackens websidor, navigation och utseende.">Hjälp</a>]</span>
 			<strong><a href="/" title="The Computer Club @ KTH">Stacken</a></strong>
 		 </div>
 		<div id="wrap">
-		        <div id="preContent">
+		    <div id="preContent">
 			     <h1><?=$title?></h1>
+				 <?=get_flash_message()?>
 			</div>
 			<!-- Sidan importerad från: <?=$url?> -->
 			<?=wiki_format($content)?>
