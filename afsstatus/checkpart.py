@@ -22,7 +22,7 @@ def tr(cell, *data):
         ''.join('<%s>%s</%s>' % (cell, d, cell) for d in data) + \
         '</tr>'
 
-print '<table clas="listing fsstatus">'
+print '<table class="listing fsstatus">'
 print '  <thead>'
 print '   ', tr('th', 'Server', 'Part', 'Used', 'Overview', 'Free', 'Total')
 print '  </thead>'
