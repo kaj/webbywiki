@@ -43,12 +43,12 @@ for server in serverlist:
             used = tot - free
             # TODO Make a first pass to find actual largest.
             largest = max(2*1024**4, tot)
-            p = 100 * float(used)/tot
-            w_u = 100 * float(used)/largest
-            w_f = 100 * float(free)/largest
+            p = float(used)/tot
+            w_u = float(used)/largest
+            w_f = float(free)/largest
             print '    ' + tr('td', shortname, match.group('part'),
                               size_fmt(used),
-                              '<span class="used bar" style="width: {1:.1f}%;">{0:.1f}%</span><span class="free bar" style="width:{2:.1f}%;">&#160;</span>'.format(p, w_u, w_f),
+                              '<span class="used bar" style="width: {1:.1%};">{0:.0%}</span><span class="free bar" style="width:{2:.1%};">&#160;</span>'.format(p, w_u, w_f),
                               size_fmt(free), size_fmt(tot))
         else:
             print 'got light? no match.'
