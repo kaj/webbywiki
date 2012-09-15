@@ -4,13 +4,22 @@ error_reporting(E_ALL & (~E_NOTICE));
 
 require "wiki_format.php";
 
+# Sätt språk
+$lang = empty($_REQUEST['lang']) ? 'sv' : $_REQUEST['lang'];
+
 ##
 # Hämta och formatera sidan
 ##
 
 $page = isset($_GET['page']) ? '/'.$_GET['page'] : '';
 $pageclass = 'stacken' . strtolower(preg_replace('/\W+/', '_', $page));
-$url = "http://wiki.stacken.kth.se/wiki/Stacken{$page}?printable=yes";
+
+if ($lang == "sv") {
+	$url = "http://wiki.stacken.kth.se/wiki/Stacken{$page}?printable=yes";
+} else {
+	$url = "http://wiki.stacken.kth.se/wiki/Stacken{$page}.{$lang}?printable=yes";
+}
+
 $content = @file_get_contents($url);
 
 $content = str_replace('&nbsp;','&#160;',$content);
@@ -74,9 +83,41 @@ $cnt = $xml->body->div->div->div->div;
 unset($cnt->h3);
 unset($cnt->div);
 
-$menu = $cnt->asXML();
-$menu = str_replace('<div id="bodyContent">','',$menu);
-$menu = str_replace('</div>','',$menu);
+$menu = "";
+foreach($cnt->ul->li as $li) {
+	$row = $li->asXML();
+	if (preg_match("#\[en\]#", $row) && !preg_match("#redlink#", $row)) {
+		$row_en = $row;
+	} else if (preg_match("#\[sv\]#", $row) && !preg_match("#redlink#", $row)) {
+		$row_sv = $row;
+	} else if (preg_match("#\[sv\]#", $row)) {
+		$row_redlink = $row;
+	}
+
+	if (preg_match("#%break%#", $row)) {
+		if ($lang == "sv") {
+			if ($row_sv) {
+				$menu .= str_replace("[sv]","",$row_sv);
+			} else if ($row_en) {
+				$menu .= $row_en;
+			} else {
+				$menu .= str_replace("[sv]","",$row_redlink);
+			}
+		} else {
+			if ($row_en) {
+				$menu .= str_replace("[en]","",$row_en);
+			} else if ($row_sv) {
+				$menu .= $row_sv;
+			} else {
+				$menu .= $row_redlink;
+			}
+		}
+
+		unset($row_sv);
+		unset($row_en);
+	}
+
+}
 
 ###
 # Hämta och formatera special-TOC
@@ -104,7 +145,12 @@ ob_start();
 	<body class="<?=$pageclass?>">
 		<div class="topmatter">
 			<a name="top"></a>
-			<span class="langlink">[<a href="<?=$page?>/English">In english</a>]</span>
+			<? if ($lang == "sv"): ?>
+				<span class="langlink">[<a href="<?=$page?>.en">In english</a>]</span>
+			<? else: ?>
+				<span class="langlink">[<a href="<?=$page?>.sv">På svenska</a>]</span>
+			<? endif; ?>
+
 			<span class="helplink">[<a href="/help/web" title="Om Stackens websidor, navigation och utseende.">Hjälp</a>]</span>
 			<strong><a href="/" title="The Computer Club @ KTH">Stacken</a></strong>
 		 </div>
