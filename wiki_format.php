@@ -74,4 +74,13 @@ function lang_menu($cnt) {
 	return $menu;
 }
 
+function menu_prepare($cnt) {
+	$cnt = str_replace('&nbsp;','&#160;',$cnt);
+	$xml = new SimpleXMLElement($cnt);
+	$cnt = $xml->body->div->div->div->div;
+	unset($cnt->h3);
+	unset($cnt->div);
+	return $cnt;
+}
+
 ?>
