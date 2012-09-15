@@ -24,6 +24,7 @@ print '  <tbody>'
 
 fmt = regex('^Free space on partition \/vicep(?P<part>\w+):? (?P<free>[-\d]+) K blocks out of total (?P<tot>[-\d]+)')
 
+tfree, ttot = 0, 0
 for server in serverlist:
     shortname = server.split('.')[0]
     vospart = Popen(['vos', 'partinfo', server, '-c', cell, '-noauth'],
@@ -35,6 +36,9 @@ for server in serverlist:
             free = int(match.group('free')) * 1024
             tot = int(match.group('tot')) * 1024
             used = tot - free
+            tfree += free
+            ttot += tot
+
             # TODO Make a first pass to find actual largest.
             largest = max(2*1024**4, tot)
             p = float(used)/tot
@@ -48,5 +52,13 @@ for server in serverlist:
             print 'got light? no match.'
             exit(1)
 
+print '  <tr class="footer">'
+print '    <th role="row">Totalt</th>'
+print '    <td></td>'
+print '    <td>%s</td>' % size_fmt(ttot - tfree)
+print '    <td></td>'
+print '    <td>%s</td>' % size_fmt(tfree)
+print '    <td>%s</td>' % size_fmt(ttot)
+print '  </tr>'
 print '  </tbody>'
 print '</table>'

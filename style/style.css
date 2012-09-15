@@ -129,6 +129,12 @@ table.listing th {
     border-bottom: solid 1px #980101;
     text-align: left;
 }
+table.listing tr.footer th,
+table.listing tr.footer td {
+    border: 0;
+    border-top: solid 1px #980101;
+}
+
 table.fsstatus td:nth-child(3),
 table.fsstatus td:nth-child(5),
 table.fsstatus td:nth-child(6) {
