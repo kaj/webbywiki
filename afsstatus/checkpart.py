@@ -1,6 +1,7 @@
 #! /usr/bin/python
 from subprocess import Popen, PIPE
 from re import compile as regex
+from common import size_fmt
 
 cell = 'stacken.kth.se'
 
@@ -9,13 +10,6 @@ def readservers(filename='servers.txt'):
         return (s.replace('\n', '') for s in f.readlines())
 
 serverlist = readservers()
-
-def size_fmt(num):
-    for x in ['bytes','KB','MB','GB']:
-        if num < 1024.0 and num > -1024.0:
-            return "%.3g %s" % (num, x)
-        num /= 1024.0
-    return "%.1f %s" % (num, 'TB')
 
 def tr(cell, *data):
     return '<tr>' + \
