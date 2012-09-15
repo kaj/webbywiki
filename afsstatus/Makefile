@@ -1,4 +1,4 @@
-all: partitions.html
+all: partitions.html diskhogs.html
 
 clean:
 	-rm servers.txt
@@ -9,4 +9,8 @@ servers.txt:
 
 partitions.html: checkpart.py servers.txt
 	./checkpart.py > $@.tmp
+	mv $@.tmp $@
+
+diskhogs.html: checkhogs.py servers.txt
+	./checkhogs.py > $@.tmp
 	mv $@.tmp $@

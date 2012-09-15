@@ -1,4 +1,8 @@
 
+def readservers(filename='servers.txt'):
+    with open(filename, 'r+') as f:
+        return (s.replace('\n', '') for s in f.readlines())
+
 def size_fmt(num):
     ''' format a size given as number of bytes with nice unit.
     >>> size_fmt(17), size_fmt(1024), size_fmt(461243), size_fmt(2.4e9)

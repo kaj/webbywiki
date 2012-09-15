@@ -1,15 +1,10 @@
 #! /usr/bin/python
 from subprocess import Popen, PIPE
 from re import compile as regex
-from common import size_fmt
+from common import readservers, size_fmt
 from datetime import datetime
 
 cell = 'stacken.kth.se'
-
-def readservers(filename='servers.txt'):
-    with open(filename, 'r+') as f:
-        return (s.replace('\n', '') for s in f.readlines())
-
 serverlist = readservers()
 
 def tr(cell, *data):
