@@ -84,7 +84,7 @@ $menu = lang_menu($cnt);
 preg_match("#/([a-z0-9]+)#i", $page, $m);
 $menu_url = "http://wiki.stacken.kth.se/wiki/Stacken/{$m[1]}/Menu?printable=yes";
 $cnt = @file_get_contents($menu_url);
-if (!empty($cnt)) {
+if (!empty($cnt) && !empty($page)) {
 	$cnt = menu_prepare($cnt);
 	$menu_sub = "<h2>".ucfirst($m[1])."</h2>";
 	$menu_sub .= lang_menu($cnt);
