@@ -18,21 +18,15 @@ $content = str_replace('&nbsp;','&#160;',$content);
 # Hack
 # Lägg till __SHOW_TOC:Kalender__ på en sida för att visa
 # TOC från Stacken/Menu/Kalender i stället för den på sidan.
-if (preg_match("#__SHOW_TOC:([a-z]+)__#i",$content)) {
-	preg_match("#__SHOW_TOC:([a-z]+)__#i", $content, $m);
-	define("SHOW_TOC_MENU", $m[1]);
-	$content = preg_replace("#__SHOW_TOC:([a-z]+)__#i",'',$content);
-} else {
-	define("SHOW_TOC_MENU", false);
-}
+$show_toc_menu = false;
+$content = preg_replace_callback("#__SHOW_TOC:([a-z]+)__#i", function($m) {
+	global $show_toc_menu;
+	$show_toc_menu = $m[1];
+	return '';
+	}, $content);
 
 # Specialsidor med genererat innehåll
-if (preg_match("#__SPECIAL:([a-z/.]+)__#i", $content)) {
-	preg_match("#__SPECIAL:([a-z/.]+)__#i", $content, $m);
-	$content = preg_replace("#__SPECIAL:([a-z/.]+)__#i",
-						    file_get_contents(dirname(__FILE__) .'/'. $m[1]),
-							$content);
-}
+$content = preg_replace("#__SPECIAL:([a-z/.]+)__#ie", "file_get_contents(dirname(__FILE__).'/$1')", $content);
 
 if ($content) {
 	$xml = new SimpleXMLElement($content);
@@ -89,8 +83,8 @@ $menu = str_replace('</div>','',$menu);
 # (den skriver över vanlig TOC)
 ##
 
-if (SHOW_TOC_MENU) {
-	$url = "http://wiki.stacken.kth.se/wiki/Stacken/Menu/".SHOW_TOC_MENU."?printable=yes";
+if ($show_toc_menu) {
+	$url = "http://wiki.stacken.kth.se/wiki/Stacken/Menu/".$show_toc_menu."?printable=yes";
 	$str = file_get_contents($url);
 	$str = str_replace('&nbsp;','&#160;',$str);
 	$xml = new SimpleXMLElement($str);
