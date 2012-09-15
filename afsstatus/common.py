@@ -10,9 +10,9 @@ def size_fmt(num):
     '''
     def s(value, unit):
         if round(value) >= 100:
-            return '{:.0f} {}'.format(value, unit)
+            return '{0:.0f} {1}'.format(value, unit)
         else:
-            return '{:.3g} {}'.format(value, unit)
+            return '{0:.3g} {1}'.format(value, unit)
 
     for x in ['bytes','KB','MB','GB']:
         if num < 1024.0 and num > -1024.0:
