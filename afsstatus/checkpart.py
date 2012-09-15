@@ -18,7 +18,7 @@ def tr(cell, *data):
         '</tr>'
 
 print '<table class="listing fsstatus">'
-print '  <caption>Partition usage for {}, generated {:%Y-%m-%d %H:%M}.</caption>' \
+print '  <caption>Partition usage for {0}, generated {1:%Y-%m-%d %H:%M}.</caption>' \
     .format(cell, datetime.now())
 print '  <thead>'
 print '   ', tr('th', 'Server', 'Part', 'Used', 'Overview', 'Free', 'Total')
