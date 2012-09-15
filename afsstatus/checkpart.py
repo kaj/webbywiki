@@ -56,6 +56,11 @@ for server in serverlist:
         else:
             print 'got light? no match.'
             exit(1)
+    if vospart.wait(): # (return 0 on successfull completition)
+        print '    <tr>'
+        print '      <td>%s</td>' % shortname
+        print '      <td colspan="5">vos partinfo failed</td>'
+        print '    </tr>'
 
 print '  <tr class="footer">'
 print '    <th role="row">Totalt</th>'
