@@ -49,7 +49,9 @@ for server in serverlist:
             w_f = float(free)/largest
             print '    ' + tr('td', shortname, match.group('part'),
                               size_fmt(used),
-                              '<span class="used bar" style="width: {1:.1%};">{0:.0%}</span><span class="free bar" style="width:{2:.1%};">&#160;</span>'.format(p, w_u, w_f),
+                              '<span class="{3} bar" style="width: {1:.1%};">{0:.0%}</span><span class="free bar" style="width:{2:.1%};">&#160;</span>' \
+                                  .format(p, w_u, w_f,
+                                          'used full' if p > 0.9 else 'used'),
                               size_fmt(free), size_fmt(tot))
         else:
             print 'got light? no match.'
