@@ -83,41 +83,7 @@ $cnt = $xml->body->div->div->div->div;
 unset($cnt->h3);
 unset($cnt->div);
 
-$menu = "";
-foreach($cnt->ul->li as $li) {
-	$row = $li->asXML();
-	if (preg_match("#\[en\]#", $row) && !preg_match("#redlink#", $row)) {
-		$row_en = $row;
-	} else if (preg_match("#\[sv\]#", $row) && !preg_match("#redlink#", $row)) {
-		$row_sv = $row;
-	} else if (preg_match("#\[sv\]#", $row)) {
-		$row_redlink = $row;
-	}
-
-	if (preg_match("#%break%#", $row)) {
-		if ($lang == "sv") {
-			if ($row_sv) {
-				$menu .= str_replace("[sv]","",$row_sv);
-			} else if ($row_en) {
-				$menu .= $row_en;
-			} else {
-				$menu .= str_replace("[sv]","",$row_redlink);
-			}
-		} else {
-			if ($row_en) {
-				$menu .= str_replace("[en]","",$row_en);
-			} else if ($row_sv) {
-				$menu .= $row_sv;
-			} else {
-				$menu .= $row_redlink;
-			}
-		}
-
-		unset($row_sv);
-		unset($row_en);
-	}
-
-}
+$menu = lang_menu($cnt);
 
 ###
 # Hämta och formatera special-TOC
