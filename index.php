@@ -30,7 +30,7 @@ if (preg_match("#__SHOW_TOC:([a-z]+)__#i",$content)) {
 if (preg_match("#__SPECIAL:([a-z/.]+)__#i", $content)) {
 	preg_match("#__SPECIAL:([a-z/.]+)__#i", $content, $m);
 	$content = preg_replace("#__SPECIAL:([a-z/.]+)__#i",
-							'<!-- ' . $m[1] . ' -->' . file_get_contents($m[1]),
+						    file_get_contents(dirname(__FILE__) .'/'. $m[1]),
 							$content);
 }
 
