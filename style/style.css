@@ -204,18 +204,21 @@ table.fsstatus td:nth-child(6) {
 	background: green;
 	background: rgba(255,255,0,0.5);
 	background: -moz-linear-gradient(to bottom, rgba(255,255,0,0.5), rgba(255,255,255,0.5) 30%, rgba(255,255,0,0.5));
+	background: -webkit-linear-gradient(to bottom, rgba(255,255,0,0.5), rgba(255,255,255,0.5) 30%, rgba(255,255,0,0.5));
 	background: linear-gradient(to bottom, rgba(255,255,0,0.5), rgba(255,255,255,0.5) 30%, rgba(255,255,0,0.5));
     }
     table.fsstatus .bar.used.full {
 	background: red;
 	background: rgba(255,0,0,0.5);
 	background: -moz-linear-gradient(to bottom, rgba(255,0,0,0.5), rgba(255,255,255,0.5) 30%, rgba(255,0,0,0.5));
+	background: -webkit-linear-gradient(to bottom, rgba(255,0,0,0.5), rgba(255,255,255,0.5) 30%, rgba(255,0,0,0.5));
 	background: linear-gradient(to bottom, rgba(255,0,0,0.5), rgba(255,255,255,0.5) 30%, rgba(255,0,0,0.5));
     }
     table.fsstatus .bar.free {
 	background: green;
 	background: rgba(0,255,0,0.5);
 	background: -moz-linear-gradient(to bottom, rgba(0,255,0,0.5), rgba(255,255,255,0.5) 30%, rgba(0,255,0,0.5));
+	background: -webkit-linear-gradient(to bottom, rgba(0,255,0,0.5), rgba(255,255,255,0.5) 30%, rgba(0,255,0,0.5));
 	background: linear-gradient(to bottom, rgba(0,255,0,0.5), rgba(255,255,255,0.5) 30%, rgba(0,255,0,0.5));
     }
 }
