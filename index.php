@@ -169,6 +169,7 @@ ob_start();
 					<!-- Slut på import -->
 				<? endif; ?>
 				<!-- Menyn importerad från: <?=$menu_url?> -->
+				<h2><?=($lang=="sv"?'Meny':'Menu')?></h2>
 				<?=wiki_format($menu)?>
 				<!-- Slut på import -->
 			</div>
