@@ -152,7 +152,8 @@ table.listing tr.footer td {
     border-top: solid 1px #980101;
 }
 
-table.fsstatus caption {
+table.fsstatus caption,
+table#volstatus caption {
     caption-side: bottom;
     font-size: 80%;
     font-style: italic;
@@ -163,6 +164,13 @@ table.fsstatus td:nth-child(5),
 table.fsstatus td:nth-child(6) {
     text-align: right;
 }
+table#volstatus th:nth-child(4),
+table#volstatus th:nth-child(5),
+table#volstatus td:nth-child(4),
+table#volstatus td:nth-child(5) {
+    text-align: right;
+}
+
 ol#spacewasters {
     -moz-column-width: 25ex;
     -webkit-column-width: 25ex;

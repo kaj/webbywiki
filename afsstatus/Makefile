@@ -1,4 +1,4 @@
-all: partitions.html diskhogs.html
+all: partitions.html diskhogs.html fullvolumes.html
 
 clean:
 	-rm servers.txt
@@ -14,5 +14,10 @@ partitions.html: checkpart.py servers.txt
 
 diskhogs.html: checkhogs.py servers.txt
 	./checkhogs.py > $@.tmp
+	chmod a+r $@.tmp
+	mv $@.tmp $@
+
+fullvolumes.html: checkvolumes.py servers.txt
+	./checkvolumes.py > $@.tmp
 	chmod a+r $@.tmp
 	mv $@.tmp $@
