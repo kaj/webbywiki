@@ -9,8 +9,10 @@ servers.txt:
 
 partitions.html: checkpart.py servers.txt
 	./checkpart.py > $@.tmp
+	chmod a+r $@.tmp
 	mv $@.tmp $@
 
 diskhogs.html: checkhogs.py servers.txt
 	./checkhogs.py > $@.tmp
+	chmod a+r $@.tmp
 	mv $@.tmp $@
