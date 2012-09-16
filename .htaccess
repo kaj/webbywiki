@@ -2,6 +2,6 @@
 	RewriteEngine On
 	RewriteBase /
 	AddDefaultCharset UTF-8
-	RewriteRule ^([a-zA-Z0-9/]+)(\.(..))?$ index.php?page=$1&lang=$3 [L]
+	RewriteRule ^([-a-zA-Z0-9/]+)(\.(..))?$ index.php?page=$1&lang=$3 [L]
 </IfModule>
 
