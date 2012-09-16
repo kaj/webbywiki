@@ -6,11 +6,11 @@ def readservers(filename='servers.txt'):
 def size_fmt(num):
     ''' format a size given as number of bytes with nice unit.
     >>> size_fmt(17), size_fmt(1024), size_fmt(461243), size_fmt(2.4e9)
-    ('17 bytes', '1 KB', '450 KB', '2.24 GB')
+    ('17 bytes', '1 KiB', '450 KiB', '2.24 GiB')
     >>> size_fmt(1024**2*1000)
-    '1000 MB'
+    '1000 MiB'
     >>> size_fmt(2*1024**4), size_fmt(2.1378*1024**4), size_fmt(768*1024**4)
-    ('2 TB', '2.14 TB', '768 TB')
+    ('2 TiB', '2.14 TiB', '768 TiB')
     '''
     def s(value, unit):
         if round(value) >= 100:
@@ -18,11 +18,11 @@ def size_fmt(num):
         else:
             return '{0:.3g} {1}'.format(value, unit)
 
-    for x in ['bytes','KB','MB','GB']:
+    for x in ['bytes','KiB','MiB','GiB']:
         if num < 1024.0 and num > -1024.0:
             return s(num, x)
         num /= 1024.0
-    return s(num, 'TB')
+    return s(num, 'TiB')
 
 
 if __name__ == "__main__":
