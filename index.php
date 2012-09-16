@@ -141,8 +141,7 @@ ob_start();
 		<link type="text/css" rel="stylesheet" href="/style/style.css">
 	</head>
 	<body class="<?=$pageclass?>">
-		<div class="topmatter">
-			<a name="top"></a>
+		<div id="top">
 			<? if ($lang == "sv"): ?>
 				<span class="langlink">[<a href="<?=(empty($page))?'/Start':$page?>.en">In english</a>]</span>
 			<? else: ?>
