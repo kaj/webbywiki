@@ -102,7 +102,7 @@ if ($content) {
 $menu_url = "http://wiki.stacken.kth.se/wiki/Stacken/Menu?printable=yes";
 $cnt = file_get_contents($menu_url);
 $cnt = menu_prepare($cnt);
-$menu = lang_menu($cnt);
+$menu = lang_menu($cnt, $lang);
 
 ###
 # Hämta och formatera sidmeny (om den finns)
@@ -114,7 +114,7 @@ $cnt = @file_get_contents($menu_url);
 if (!empty($cnt) && !empty($page)) {
 	$cnt = menu_prepare($cnt);
 	$menu_sub = "<h2>".ucfirst($m[1])."</h2>";
-	$menu_sub .= lang_menu($cnt);
+	$menu_sub .= lang_menu($cnt, $lang);
 }
 
 ###

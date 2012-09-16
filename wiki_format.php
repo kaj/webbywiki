@@ -35,7 +35,7 @@ function wiki_format($str) {
 	return $str;
 }
 
-function lang_menu($cnt) {
+function lang_menu($cnt, $lang) {
 	$menu = "";
 	foreach($cnt->ul->li as $li) {
 		$row = $li->asXML();
