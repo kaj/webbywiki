@@ -165,11 +165,12 @@ table.fsstatus td:nth-child(6) {
 }
 ol#spacewasters {
     -moz-column-width: 25ex;
+    -webkit-column-width: 25ex;
     column-width: 25ex;
 }
 ol#spacewasters .user {
     display: inline-block;
-    width: 10ex;
+    width: 11ex;
 }
 
 @media screen and (min-width: 35em) {
