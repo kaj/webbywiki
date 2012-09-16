@@ -133,7 +133,7 @@ if ($show_toc_menu) {
 
 ob_start();
 ?>
-<html>
+<html lang="<?=$lang?>">
 	<head>
 		<title><?=$title?> - Datorföreningen Stacken</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
