@@ -178,7 +178,7 @@ ob_start();
 			</div>
 			<div id="footer">
 				<p class="signed">
-					<a href="/webmasters">Webmasters</a> @
+					<a href="/webmaster">Webmasters</a> @
 					<a href="/">Stacken</a>
 				</p>
 			     <p class="dated"><?=$last_mod?></p>
