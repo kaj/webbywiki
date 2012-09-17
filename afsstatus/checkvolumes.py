@@ -49,7 +49,7 @@ for vol in volumes.values():
             not (vol['name'].startswith('home.') or
                  vol['name'].startswith('H.')):
         vol['fill'] = float(vol['size']) / vol['quota']
-        if vol['fill'] > 0.9:
+        if vol['fill'] > 0.95:
             print '    <tr>'
             print '      <td>', vol['name'], '</td>'
             print '      <td>', vol['server'], '</td>'
