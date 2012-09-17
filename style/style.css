@@ -138,6 +138,9 @@ table.listing {
     width: 100%;
     margin: 1em 0;
 }
+table.listing tr:hover {
+    background: #ffdda1;
+}
 table.listing th {
     border-bottom: solid 1px #980101;
     text-align: left;
