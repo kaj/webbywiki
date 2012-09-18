@@ -25,6 +25,7 @@ fmt = regex('^Free space on partition \/vicep(?P<part>\w+):? (?P<free>[-\d]+) K 
 tfree, ttot = 0, 0
 for server in serverlist:
     shortname = server.split('.')[0]
+    hostlink = '<a href="http://wiki.stacken.kth.se/wiki/{name}">{name}</a>'.format(name=shortname)
     vospart = Popen(['vos', 'partinfo', server, '-c', cell, '-noauth'],
                     stdout=PIPE)
 
@@ -42,7 +43,7 @@ for server in serverlist:
             p = float(used)/tot
             w_u = float(used)/largest
             w_f = float(free)/largest
-            print '    ' + tr('td', shortname, match.group('part'),
+            print '    ' + tr('td', hostlink, match.group('part'),
                               size_fmt(used),
                               '<span class="{3} bar" style="width: {1:.1%};">{0:.0%}</span><span class="free bar" style="width:{2:.1%};">&#160;</span>' \
                                   .format(p, w_u, w_f,
@@ -53,7 +54,7 @@ for server in serverlist:
             exit(1)
     if vospart.wait(): # (return 0 on successfull completition)
         print '    <tr>'
-        print '      <td>%s</td>' % shortname
+        print '      <td>%s</td>' % hostlink
         print '      <td colspan="5">vos partinfo failed</td>'
         print '    </tr>'
 
