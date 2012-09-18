@@ -25,8 +25,7 @@ function wiki_format($str) {
 	$str = preg_replace('#<a href=.*action=edit.*>(.*)</a>#U','$1',$str);
 
 	# Clean up links
-	$str = str_replace('/wiki/','',$str);
-	$str = str_replace('href="Stacken/','href="/',$str);
+	$str = str_replace('"/wiki/Stacken','"',$str);
 
 	# Remove misc stuff
 	$str = str_replace('<a name="Stacken" id="Stacken"></a>','',$str);
