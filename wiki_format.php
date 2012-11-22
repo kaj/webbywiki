@@ -22,7 +22,7 @@ function wiki_format($str) {
 	$str = preg_replace('/<!--(.+)-->/Us','',$str);
 
 	# Remove dead (edit-links)
-	$str = preg_replace('#<a href=.*action=edit.*>(.*)</a>#U','$1',$str);
+	$str = preg_replace('#(<a href=.*)action=edit(.*>.*</a>)#U','$1$2',$str);
 
 	# Clean up links
 	$str = str_replace('"/wiki/Stacken','"',$str);
