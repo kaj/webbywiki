@@ -86,6 +86,17 @@ if ($content) {
 		}
 	}
 
+	# Om sidan inte finns på webbywiki, prova om den finns på gamla sidan och
+	# försök att hämta den i stället.
+	if ($old_page = file_get_contents("http://oldwww.stacken.kth.se/$page")) {
+		$old_page = str_replace("/css/stacken2012.css",
+			"http://oldwww.stacken.kth.se/css/stacken2012.css",$old_page);
+		$old_page = str_replace("/css/print.css",
+			"http://oldwww.stacken.kth.se/css/print.css",$old_page);
+		echo utf8_encode($old_page);
+		exit;
+	}
+
 	header("HTTP/1.0 404 Not Found");
 	$content = "
 		<div id=\"bodyContent\">
