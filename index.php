@@ -19,12 +19,13 @@ $pageclass = 'stacken' . strtolower(preg_replace('/\W+/', '_', $page));
 
 function get_url($lang) {
 	global $page;
-	if ($lang == "sv") {
-		$url = "http://wiki.stacken.kth.se/wiki/Stacken{$page}?printable=yes";
-	} else {
-		$url = "http://wiki.stacken.kth.se/wiki/Stacken{$page}.{$lang}?printable=yes";
+	# NOTE This only removes the slash internally, without redirect.
+	# The /foo/ will be identical to /foo (bad google carma).
+	$id = rtrim($page, '/');
+	if ($lang != "sv") {
+		$id = "{$id}.{$lang}";
 	}
-	return $url;
+	return "http://wiki.stacken.kth.se/wiki/Stacken{$id}?printable=yes";
 }
 
 $url = get_url($lang);
