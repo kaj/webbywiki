@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /dectimeline/
+Disallow: /error-handlers/
+Disallow: /pub/
+Disallow: /old/
+Disallow: /computing/analog/
+Disallow: /computing/awstats/
+Disallow: /cgi-bin/
+Disallow: /ftp/
+
+User-agent: Googlebot-Image
+Disallow: /~noora/
