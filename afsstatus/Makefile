@@ -4,7 +4,7 @@ clean:
 	-rm servers.txt
 
 servers.txt:
-	vos listvldb -c stacken.kth.se -noauth| awk '/^ +server/ {print $$2}'|sort -u > $@.tmp
+	vos listaddr -c stacken.kth.se -noauth |sort -u > $@.tmp
 	mv $@.tmp $@
 
 partitions.html: checkpart.py servers.txt
