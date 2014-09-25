@@ -55,7 +55,7 @@ if ($content) {
 
 	# ta bort lite saker
 	unset($content->h3[0]); #sideSub
-	unset($content->div);
+	//unset($content->div);
 
 	$title = "" . $content->h1->span;
 
