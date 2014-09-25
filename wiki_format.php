@@ -77,7 +77,7 @@ function lang_menu($cnt, $lang) {
 function menu_prepare($cnt) {
 	$cnt = str_replace('&nbsp;','&#160;',$cnt);
 	$xml = new SimpleXMLElement($cnt);
-	$cnt = $xml->body->div->div->div->div;
+	$cnt = $xml->body->div->div->div->div->div[3];
 	unset($cnt->h3);
 	unset($cnt->div);
 	return $cnt;
