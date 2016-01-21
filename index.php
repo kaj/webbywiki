@@ -53,19 +53,13 @@ if ($content) {
 	$content = $xml->body->div->div->div->div;
 	$last_mod = $xml->body->div->div[3]->ul->li;
 
-	# ta bort lite saker
-	unset($content->h3[0]); #sideSub
-	//unset($content->div);
-
-	$title = "" . $content->h1->span;
+        # Denna tar bort innehållsförteckningen
+        unset($content->div[3]->table);
 
 	if ($content->table) {
 		$toc = $content->table->tr->td->ul->asXML();
 		unset($content->table[0]);
 	}
-
-	unset($content->h1);
-	unset($content->script);
 
 	$content = $content->asXML();
 } else {
@@ -104,7 +98,6 @@ if ($content) {
 			<p>The requested URL {$page} was not found on this server.</p>
 		</div>
 		";
-	$title = "404: Not Found";
 }
 
 ##
@@ -147,7 +140,7 @@ ob_start();
 ?>
 <html lang="<?=$lang?>">
 	<head>
-		<title><?=$title?> - Datorföreningen Stacken</title>
+		<title>Datorföreningen Stacken</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link type="text/css" rel="stylesheet" href="/style/style.css">
@@ -164,8 +157,7 @@ ob_start();
 			<strong><a href="/" title="The Computer Club @ KTH">Stacken</a></strong>
 		 </div>
 		<div id="wrap">
-		    <div id="preContent">
-			     <h1><?=$title?></h1>
+                        <div id="preContent">
 				 <?=get_flash_message()?>
 			</div>
 			<!-- Sidan importerad från: <?=$url?> -->
