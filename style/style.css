@@ -267,3 +267,11 @@ ol#spacewasters .user {
 	border-width: 1px 1px 1px 0;
     }
 }
+@media print {
+    #top .langlink, #top .helplink,
+    #siteSub, #jump-to-nav, div.printfooter, div.menu,
+    #footer { display: none; }
+    h2 { font-size: 140%; }
+    h3 { font-size: 120%; }
+    h4, h5, h6 { font-size: 100%; }
+}
